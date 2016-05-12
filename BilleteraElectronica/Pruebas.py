@@ -29,7 +29,7 @@ class PruebasBilletera(unittest.TestCase):
         Angel = dueno('Angel', 'Martiñez Gonzalez', 21134902)
         bill = BilleteraElectronica('255', Angel, 2201)
         bill.recargar(1500, '2201')
-        bill.consumir(1000, '2201', 2541)
+        bill.consumir(1000, '2201', 2201)
         self.assertEqual(500, bill.consultaSaldo())
         
     def testConsumirClave(self):

@@ -14,5 +14,11 @@ class PruebasBilletera(unittest.TestCase):
         Angel = dueno('Angel', 'Martiñez Gonzalez', 21134902)
         bill = BilleteraElectronica('255', Angel, 2201)
         
+    def testRecargar(self):
+        Angel = dueno('Angel', 'Martiñez Gonzalez', 21134902)
+        bill = BilleteraElectronica('255', Angel, 2201)
+        bill.recargar(1500, '2201')
+        self.assertEqual(1500, bill.saldo)
+        
     
         

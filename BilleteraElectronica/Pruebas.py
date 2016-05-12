@@ -21,8 +21,8 @@ class PruebasBilletera(unittest.TestCase):
         self.assertEqual(1500, bill.saldo)
         
     def testSaldo(self):
-        Angel = dueno('Angel', 'Martiñez Gonzalez', 21134
+        Angel = dueno('Angel', 'Martiñez Gonzalez', 21134902)
         bill = BilleteraElectronica('255', Angel, 2201)
-        self.assertEqual(0, bill.saldo())
+        self.assertEqual(0, bill.consultaSaldo())
     
         

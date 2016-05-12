@@ -1,6 +1,15 @@
 '''
 Created on May 12, 2016
 
+Billetera.py
+
+Autores:
+    Honorio Rodriguez 09-11023
+    Carlos Gonzalez  10-10300
+    
+Descripcion:
+    Billetera Virtual para la realizacion de transacciones y consumos
+
 @author: carlos
 '''
 
@@ -12,11 +21,13 @@ import time
 
 # Creamos la clase dueno que aceptara nombres, apellidos, y un numero de cedula
 class dueno:
+    # Iniciamos la clase
     def __init__(self, nombres, apellidos, ci):
         if isinstance(ci,int) and ci>0 and 1<=len(str(ci))<=10:
             self.nombres = nombres
             self.apellidos = apellidos
             self.ci = ci
+        # De no cumplir la restricciones de la cedula sera un dueno nulo
         else:
             self.nombres = None
             self.apellidos = None
@@ -40,7 +51,7 @@ class Creditos:
     def nuevaRecarga(self, transaccion):
         self.creditos.append(transaccion)
                 
- # Creamos la clase debitos para guardar todas las transacciones de recargas realizadas                 
+# Creamos la clase debitos para guardar todas las transacciones de recargas realizadas                 
 class Debitos:
     # Iniciamos la clase
     def __init__(self):

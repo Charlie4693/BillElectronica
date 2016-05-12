@@ -6,17 +6,8 @@ Created on May 12, 2016
 from Billetera import *
 import unittest
 
-class PruebasBilletera(unittest.TestCase):
-    '''
-    def testClaseVacia(self):
-        bill = billeteraElectronica('255')
-    '''   
-    ''' 
-    def testClaseDueno(self):
-        Angel = dueno('Angel', 'Martinez Gonzalez', 21134902)
-        bill = billeteraElectronica('255', Angel)
-    '''    
-    def testPin(self):
-        Angel = dueno('Angel', 'Martinez Gonzalez', 21134902)
-        bill = billeteraElectronica('255', Angel, 2201)
+class PruebasBilletera(unittest.TestCase):  
+    def testClaseBilletera(self):
+        Angel = dueno('Angel', 'Martiñez Gonzalez', 21134902)
+        bill = BilleteraElectronica('255', Angel, 2201)
         

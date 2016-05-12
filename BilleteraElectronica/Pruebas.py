@@ -51,7 +51,13 @@ class PruebasBilletera(unittest.TestCase):
         Angel = dueno('Angel', 'Martiñez Gonzalez', 21134902)
         bill = BilleteraElectronica('255', Angel, 2201)
         bill.recargar(-1500, '2201')
-        bill.consumir(2000, '2201', 2541)
+        self.assertEqual(0, bill.consultaSaldo())
+        
+        
+    def testMontoNegativo(self):
+        Angel = dueno('Angel', 'Martiñez Gonzalez', 21134902)
+        bill = BilleteraElectronica('255', Angel, 2201)
+        bill.consumir(-2000, '2201', 2541)
         self.assertEqual(0, bill.consultaSaldo())
         
     

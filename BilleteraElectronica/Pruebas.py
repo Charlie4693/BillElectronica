@@ -70,7 +70,34 @@ class PruebasBilletera(unittest.TestCase):
         bill.recargar(30, '2201')
         bill.recargar(700, '2201')
         self.assertEqual(5, len(bill.credito.creditos))
+      
+    
+    def testCedulaNegativa(self):
+        Angel = dueno('Angel', 'Martiñez Gonzalez', -21134902)
+        self.assertEqual(None, Angel.ci)
         
+    def testCedulaInvalida(self):
+        Angel = dueno('Angel', 'Martiñez Gonzalez', 'hg4')
+        self.assertEqual(None, Angel.ci)
+        
+        
+    def testCedula1Digito(self):
+        Angel = dueno('Angel', 'Martiñez Gonzalez', 2)
+        self.assertEqual(1, len(str(Angel.ci)))
+        
+    def testCedula10Digitos(self):
+        Angel = dueno('Angel', 'Martiñez Gonzalez', 2254863254)
+        self.assertEqual(10, len(str(Angel.ci)))
+        
+    def testCedulaCero(self):
+        Angel = dueno('Angel', 'Martiñez Gonzalez', 0)
+        self.assertEqual(None, Angel.ci)
+        
+    def testCedula11Digitos(self):
+        Angel = dueno('Angel', 'Martiñez Gonzalez', 22222222222)
+        self.assertEqual(None, Angel.ci)
+    
+    '''      
     def testTransaccionesConsu(self):
         Angel = dueno('Angel', 'Martiñez Gonzalez', 21134902)
         bill = BilleteraElectronica('255', Angel, 2201)
@@ -95,17 +122,24 @@ class PruebasBilletera(unittest.TestCase):
         bill.recargar(1, '2201')
         self.assertEqual(1, bill.consultaSaldo())
         
-    ''' Casos Maliciosos'''
+     Casos Maliciosos
             
     def testPinNoNumerico(self):
         Angel = dueno('Angel', 'Martiñez Gonzalez', 21134902)
         bill = BilleteraElectronica('255', Angel, 'hgf')
         self.assertEqual(None, bill.pin)
         
-    
+    def testNombresCarEspeciales(self):
+        Angel = dueno('Ángel_ñ', 'Martiñez-Gonzalez', 21134902)
+        self.assertEqual(True, isinstance(Angel.nombres,str))
+        
+    def testConsumoMaximo(self):
+        Angel = dueno('Angel', 'Martiñez Gonzalez', 21134902)
+        bill = BilleteraElectronica('255', Angel, 2201)
+        bill.recargar(50000, '2201')
+        bill.consumir(bill.consultaSaldo(), '2201', 2201)
+        self.assertEqual(0, bill.saldo)
         
     
-        
-    
-    
+ ''' 
         

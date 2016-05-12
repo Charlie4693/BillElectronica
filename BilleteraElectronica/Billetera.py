@@ -64,8 +64,8 @@ class Debitos:
 class BilleteraElectronica:
     # Iniciamos la clase
     def __init__(self, identificador, dueno, pin):
-        # Verificamos que el pin introducido sea numerico
-        if isinstance(pin,int):
+        # Verificamos que el pin introducido sea numerico y entre 4 y 6 digitos
+        if isinstance(pin,int) and 4<=len(str(pin))<=6:
             self.identificador = identificador
             self.dueno = dueno
             self.pin = pin

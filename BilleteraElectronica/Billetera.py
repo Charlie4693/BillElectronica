@@ -54,7 +54,10 @@ class BilleteraElectronica:
         pass
        
     def recargar(self, monto, idEst):
-        pass
+        fecha = time.strftime("%d/%m/%y")
+        cre = transaccion(monto, fecha, idEst)
+        self.creditos.nuevaRecarga(cre)
+        self.saldo = self.saldo + monto
         
     def consumir(self, monto, idEst, pin):
         pass

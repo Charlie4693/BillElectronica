@@ -26,7 +26,7 @@ class transaccion:
         return cadena
         
         
-class creditos:
+class Creditos:
     def __init__(self):
         self.creditos = []
         
@@ -34,38 +34,50 @@ class creditos:
         self.creditos.append(transaccion)
                 
                
-class debitos:
+class Debitos:
     def __init__(self):
         self.debitos = []
         
     def nuevoConsumo(self, transaccion):
         self.debitos.append(transaccion)
+        
 
 class BilleteraElectronica:
     def __init__(self, identificador, dueno, pin):
-        self.identificardor = identificador
-        self.dueno = dueno
-        self.pin = pin
-        self.saldo = 0
-        self.creditos = creditos()
-        self.debitos = debitos()
+        if isinstance(pin,int):
+            self.identificador = identificador
+            self.dueno = dueno
+            self.pin = pin
+            self.saldo = 0
+            self.credito = Creditos()
+            self.debito = Debitos()
+            
+        else:
+            self.identificador = None
+            self.dueno = None
+            self.pin = None
+            self.saldo = None
+            self.credito = None
+            self.debito = None  
                 
     def consultaSaldo(self):
         return self.saldo
        
     def recargar(self, monto, idEst):
-        if monto >= 0:
+        if monto > 0:
             fecha = time.strftime("%d/%m/%y")
             cre = transaccion(monto, fecha, idEst)
-            self.creditos.nuevaRecarga(cre)
+            self.credito.nuevaRecarga(cre)
             self.saldo = self.saldo + monto
         
     def consumir(self, monto, idEst, pin):
-        if (self.saldo >= monto  and self.pin == pin and monto >= 0):
+        if (self.saldo >= monto  and self.pin == pin and monto > 0):
             fecha = time.strftime("%d/%m/%y")
             deb = transaccion(monto, fecha, idEst)
-            self.debitos.nuevoConsumo(deb)
+            self.debito.nuevoConsumo(deb)
             self.saldo = self.saldo - monto
+            
+
             
         
     

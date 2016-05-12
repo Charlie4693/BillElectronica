@@ -7,7 +7,12 @@ from Billetera import *
 import unittest
 
 class PruebasBilletera(unittest.TestCase):  
+    def testClaseDueno(self):
+        Angel = dueno('Angel', 'Martiñez Gonzalez', 21134902)
+    
     def testClaseBilletera(self):
         Angel = dueno('Angel', 'Martiñez Gonzalez', 21134902)
         bill = BilleteraElectronica('255', Angel, 2201)
+        
+    
         

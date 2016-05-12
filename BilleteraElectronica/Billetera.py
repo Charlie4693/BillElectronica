@@ -54,10 +54,11 @@ class BilleteraElectronica:
         return self.saldo
        
     def recargar(self, monto, idEst):
-        fecha = time.strftime("%d/%m/%y")
-        cre = transaccion(monto, fecha, idEst)
-        self.creditos.nuevaRecarga(cre)
-        self.saldo = self.saldo + monto
+        if monto >= 0:
+            fecha = time.strftime("%d/%m/%y")
+            cre = transaccion(monto, fecha, idEst)
+            self.creditos.nuevaRecarga(cre)
+            self.saldo = self.saldo + monto
         
     def consumir(self, monto, idEst, pin):
         if (self.saldo >= monto  and self.pin == pin):

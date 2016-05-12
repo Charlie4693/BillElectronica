@@ -60,5 +60,11 @@ class BilleteraElectronica:
         self.saldo = self.saldo + monto
         
     def consumir(self, monto, idEst, pin):
-        pass
+        if (self.saldo >= monto):
+            fecha = time.strftime("%d/%m/%y")
+            deb = transaccion(monto, fecha, idEst)
+            self.debitos.nuevoConsumo(deb)
+            self.saldo = self.saldo - monto
+            
+        
     
